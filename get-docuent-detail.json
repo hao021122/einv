@@ -1,0 +1,49 @@
+{
+    "uuid": "ZK20KVDJ8Y54H8TVQX1A3YVJ10",
+    "submissionUid": "XZSP9DWNSQ81BDNCPX1A3YVJ10",
+    "longId": "C45XB9DKYK2QWCK9QX1A3YVJ10fpTnfS1747988055",
+    "typeName": "Invoice",
+    "typeVersionName": "Version 1",
+    "issuerTin": "IG57188163070",
+    "issuerName": "CHIN LEE HAO",
+    "receiverId": "IG21803631000",
+    "receiverName": "ARTHUR LIU HING HUI",
+    "dateTimeReceived": "2025-05-23T08:14:15Z",
+    "dateTimeValidated": "2025-05-23T08:14:20Z",
+    "totalExcludingTax": 94.0,
+    "totalDiscount": 6.0,
+    "totalNetAmount": 94.0,
+    "totalPayableAmount": 94.0,
+    "status": "Valid",
+    "createdByUserId": "IG57188163070:61297ec3-881b-4e1e-87c2-642228c879de",
+    "documentStatusReason": null,
+    "cancelDateTime": null,
+    "rejectRequestDateTime": null,
+    "validationResults": {
+        "status": "Valid",
+        "validationSteps": [
+            {
+                "status": "Valid",
+                "name": "Step03-Duplicated Submission Validator"
+            },
+            {
+                "status": "Valid",
+                "name": "Step04-Code Field Validator"
+            },
+            {
+                "status": "Valid",
+                "name": "Step05-Taxpayer Profile Validator"
+            },
+            {
+                "status": "Valid",
+                "name": "Step06-Document References Validator"
+            },
+            {
+                "status": "Valid",
+                "name": "Step07-Document Currency Validator"
+            }
+        ]
+    },
+    "internalId": "167071324521",
+    "dateTimeIssued": "2025-05-23T07:12:00Z"
+}

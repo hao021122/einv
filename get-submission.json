@@ -1,0 +1,32 @@
+{
+    "submissionUid": "XZSP9DWNSQ81BDNCPX1A3YVJ10",
+    "documentCount": 1,
+    "dateTimeReceived": "2025-05-23T08:14:15Z",
+    "overallStatus": "Valid",
+    "documentSummary": [
+        {
+            "uuid": "ZK20KVDJ8Y54H8TVQX1A3YVJ10",
+            "submissionUid": "XZSP9DWNSQ81BDNCPX1A3YVJ10",
+            "longId": "C45XB9DKYK2QWCK9QX1A3YVJ10fpTnfS1747988055",
+            "internalId": "167071324521",
+            "typeName": "Invoice",
+            "typeVersionName": "Version 1",
+            "issuerTin": "IG57188163070",
+            "issuerName": "CHIN LEE HAO",
+            "receiverId": "IG21803631000",
+            "receiverName": "ARTHUR LIU HING HUI",
+            "dateTimeIssued": "2025-05-23T07:12:00Z",
+            "dateTimeReceived": "2025-05-23T08:14:15Z",
+            "dateTimeValidated": "2025-05-23T08:14:20Z",
+            "totalPayableAmount": 94.0,
+            "totalExcludingTax": 94.0,
+            "totalDiscount": 6.0,
+            "totalNetAmount": 94.0,
+            "status": "Valid",
+            "cancelDateTime": null,
+            "rejectRequestDateTime": null,
+            "documentStatusReason": null,
+            "createdByUserId": "IG57188163070:61297ec3-881b-4e1e-87c2-642228c879de"
+        }
+    ]
+}

@@ -1,0 +1,1111 @@
+{
+  "_D": "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2",
+  "_A": "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2",
+  "_B": "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2",
+  "Invoice": [
+    {
+      "ID": [
+        {
+          "_": "359315588244"
+        }
+      ],
+      "IssueDate": [
+        {
+          "_": "2025-05-28"
+        }
+      ],
+      "IssueTime": [
+        {
+          "_": "04:01:00Z"
+        }
+      ],
+      "InvoiceTypeCode": [
+        {
+          "_": "01",
+          "listVersionID": "1.0"
+        }
+      ],
+      "DocumentCurrencyCode": [
+        {
+          "_": "MYR"
+        }
+      ],
+      "InvoicePeriod": [
+        {
+          "StartDate": [
+            {
+              "_": ""
+            }
+          ],
+          "EndDate": [
+            {
+              "_": ""
+            }
+          ],
+          "Description": [
+            {
+              "_": "Monthly"
+            }
+          ]
+        }
+      ],
+      "BillingReference": [
+        {
+          "AdditionalDocumentReference": [
+            {
+              "ID": [
+                {
+                  "_": ""
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "AdditionalDocumentReference": [
+        {
+          "ID": [
+            {
+              "_": "Reference Number of Customs Form No.1,9 etc."
+            }
+          ],
+          "DocumentType": [
+            {
+              "_": "CustomsImportForm"
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "FTA"
+            }
+          ],
+          "DocumentType": [
+            {
+              "_": "FreeTradeAgreement"
+            }
+          ],
+          "DocumentDescription": [
+            {
+              "_": "Free Trade Agreement (FTA) Information"
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "Reference Number of Custom Form No.2"
+            }
+          ],
+          "DocumentType": [
+            {
+              "_": "K2"
+            }
+          ]
+        },
+        {
+          "ID": [
+            {
+              "_": "Inc"
+            }
+          ],
+          "DocumentType": [
+            {
+              "_": ""
+            }
+          ]
+        }
+      ],
+      "AccountingSupplierParty": [
+        {
+          "AdditionalAccountID": [
+            {
+              "_": "Authorization Number for Certified Exporter (e.g., ATIGA number)",
+              "schemeAgencyName": "CertEX"
+            }
+          ],
+          "Party": [
+            {
+              "IndustryClassificationCode": [
+                {
+                  "_": "01134",
+                  "name": "Growing of mushrooms and truffles"
+                }
+              ],
+              "PartyIdentification": [
+                {
+                  "ID": [
+                    {
+                      "_": "IG57188163070",
+                      "schemeID": "TIN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "021122011609",
+                      "schemeID": "NRIC"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "0",
+                      "schemeID": "SST"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "0",
+                      "schemeID": "TTX"
+                    }
+                  ]
+                }
+              ],
+              "PostalAddress": [
+                {
+                  "CityName": [
+                    {
+                      "_": "Masai"
+                    }
+                  ],
+                  "PostalZone": [
+                    {
+                      "_": "81750"
+                    }
+                  ],
+                  "CountrySubentityCode": [
+                    {
+                      "_": "01"
+                    }
+                  ],
+                  "AddressLine": [
+                    {
+                      "Line": [
+                        {
+                          "_": "15, Jalan Dedaru 6"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": "Taman Cahaya Kota Putri"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "Country": [
+                    {
+                      "IdentificationCode": [
+                        {
+                          "_": "MYS",
+                          "listID": "3166-1",
+                          "listAgencyID": "ISO"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "PartyLegalEntity": [
+                {
+                  "RegistrationName": [
+                    {
+                      "_": "CHIN LEE HAO"
+                    }
+                  ]
+                }
+              ],
+              "Contact": [
+                {
+                  "Telephone": [
+                    {
+                      "_": "0189551882"
+                    }
+                  ],
+                  "ElectronicMail": [
+                    {
+                      "_": "chinleehao@gmail.com"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "AccountingCustomerParty": [
+        {
+          "Party": [
+            {
+              "PartyIdentification": [
+                {
+                  "ID": [
+                    {
+                      "_": "IG21803631000",
+                      "schemeID": "TIN"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "880731145069",
+                      "schemeID": "NRIC"
+                    }
+                  ]
+                },
+                {
+                  "ID": [
+                    {
+                      "_": "NA",
+                      "schemeID": "SST"
+                    }
+                  ]
+                }
+              ],
+              "PostalAddress": [
+                {
+                  "CityName": [
+                    {
+                      "_": "SETAPAK"
+                    }
+                  ],
+                  "PostalZone": [
+                    {
+                      "_": ""
+                    }
+                  ],
+                  "CountrySubentityCode": [
+                    {
+                      "_": "14"
+                    }
+                  ],
+                  "AddressLine": [
+                    {
+                      "Line": [
+                        {
+                          "_": "SETAPAK"
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": ""
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "Country": [
+                    {
+                      "IdentificationCode": [
+                        {
+                          "_": "MYS",
+                          "listID": "3166-1",
+                          "listAgencyID": "ISO"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "PartyLegalEntity": [
+                {
+                  "RegistrationName": [
+                    {
+                      "_": "ARTHUR LIU HING HUI"
+                    }
+                  ]
+                }
+              ],
+              "Contact": [
+                {
+                  "Telephone": [
+                    {
+                      "_": "+60162492927"
+                    }
+                  ],
+                  "ElectronicMail": [
+                    {
+                      "_": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "Delivery": [
+        {
+          "DeliveryParty": [
+            {
+              "PartyLegalEntity": [
+                {
+                  "RegistrationName": [
+                    {
+                      "_": ""
+                    }
+                  ]
+                }
+              ],
+              "PostalAddress": [
+                {
+                  "CityName": [
+                    {
+                      "_": ""
+                    }
+                  ],
+                  "PostalZone": [
+                    {
+                      "_": ""
+                    }
+                  ],
+                  "CountrySubentityCode": [
+                    {
+                      "_": ""
+                    }
+                  ],
+                  "AddressLine": [
+                    {
+                      "Line": [
+                        {
+                          "_": ""
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": ""
+                        }
+                      ]
+                    },
+                    {
+                      "Line": [
+                        {
+                          "_": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "Country": [
+                    {
+                      "IdentificationCode": [
+                        {
+                          "_": "",
+                          "listID": "",
+                          "listAgencyID": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "PartyIdentification": [
+                {
+                  "ID": [
+                    {
+                      "_": "",
+                      "schemeID": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "Shipment": [
+            {
+              "ID": [
+                {
+                  "_": ""
+                }
+              ],
+              "FreightAllowanceCharge": [
+                {
+                  "ChargeIndicator": [
+                    {
+                      "_": true
+                    }
+                  ],
+                  "AllowanceChargeReason": [
+                    {
+                      "_": "Deatils Charges Desc"
+                    }
+                  ],
+                  "Amount": [
+                    {
+                      "_": 10,
+                      "currencyID": "MYR"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "PaymentMeans": [
+        {
+          "PaymentMeansCode": [
+            {
+              "_": "01"
+            }
+          ],
+          "PayeeFinancialAccount": [
+            {
+              "ID": [
+                {
+                  "_": "6666666666"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "PaymentTerms": [
+        {
+          "Note": [
+            {
+              "_": "cash"
+            }
+          ]
+        }
+      ],
+      "PrepaidPayment": [
+        {
+          "ID": [
+            {
+              "_": ""
+            }
+          ],
+          "PaidAmount": [
+            {
+              "_": 10,
+              "currencyID": "MYR"
+            }
+          ],
+          "PaidDate": [
+            {
+              "_": ""
+            }
+          ],
+          "PaidTime": [
+            {
+              "_": ""
+            }
+          ]
+        }
+      ],
+      "AllowanceCharge": [
+        {
+          "ChargeIndicator": [
+            {
+              "_": true
+            }
+          ],
+          "AllowanceChargeReason": [
+            {
+              "_": ""
+            }
+          ],
+          "Amount": [
+            {
+              "_": 0,
+              "currencyID": "MYR"
+            }
+          ]
+        },
+        {
+          "ChargeIndicator": [
+            {
+              "_": false
+            }
+          ],
+          "AllowanceChargeReason": [
+            {
+              "_": ""
+            }
+          ],
+          "Amount": [
+            {
+              "_": 0,
+              "currencyID": "MYR"
+            }
+          ]
+        }
+      ],
+      "TaxTotal": [
+        {
+          "TaxAmount": [
+            {
+              "_": 0,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxSubtotal": [
+            {
+              "TaxableAmount": [
+                {
+                  "_": 0,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxAmount": [
+                {
+                  "_": 0,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxCategory": [
+                {
+                  "ID": [
+                    {
+                      "_": "02"
+                    }
+                  ],
+                  "TaxScheme": [
+                    {
+                      "ID": [
+                        {
+                          "_": "OTH",
+                          "schemeAgencyID": "6",
+                          "schemeID": "UN/ECE 5153"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "TaxableAmount": [
+                {
+                  "_": 150,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxAmount": [
+                {
+                  "_": 9,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxCategory": [
+                {
+                  "ID": [
+                    {
+                      "_": "E"
+                    }
+                  ],
+                  "TaxScheme": [
+                    {
+                      "ID": [
+                        {
+                          "_": "OTH",
+                          "schemeAgencyID": "6",
+                          "schemeID": "UN/ECE 5153"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "LegalMonetaryTotal": [
+        {
+          "LineExtensionAmount": [
+            {
+              "_": 150,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxExclusiveAmount": [
+            {
+              "_": 150,
+              "currencyID": "MYR"
+            }
+          ],
+          "TaxInclusiveAmount": [
+            {
+              "_": 150,
+              "currencyID": "MYR"
+            }
+          ],
+          "AllowanceTotalAmount": [
+            {
+              "_": 0,
+              "currencyID": "MYR"
+            }
+          ],
+          "ChargeTotalAmount": [
+            {
+              "_": 0,
+              "currencyID": "MYR"
+            }
+          ],
+          "PayableAmount": [
+            {
+              "_": 140,
+              "currencyID": "MYR"
+            }
+          ],
+          "PayableRoundingAmount": [
+            {
+              "_": 0,
+              "currencyID": "MYR"
+            }
+          ]
+        }
+      ],
+      "InvoiceLine": [
+        {
+          "AllowanceCharge": [
+            {
+              "Amount": [
+                {
+                  "_": 0,
+                  "currencyID": "MYR"
+                }
+              ],
+              "ChargeIndicator": [
+                {
+                  "_": true
+                }
+              ],
+              "MultiplierFactorNumeric": [
+                {
+                  "_": 0
+                }
+              ],
+              "AllowanceChargeReason": [
+                {
+                  "_": "bbbbbbbb"
+                }
+              ]
+            },
+            {
+              "Amount": [
+                {
+                  "_": 0,
+                  "currencyID": "MYR"
+                }
+              ],
+              "ChargeIndicator": [
+                {
+                  "_": false
+                }
+              ],
+              "MultiplierFactorNumeric": [
+                {
+                  "_": 0
+                }
+              ],
+              "AllowanceChargeReason": [
+                {
+                  "_": "aaaaa"
+                }
+              ]
+            }
+          ],
+          "ID": [
+            {
+              "_": "1"
+            }
+          ],
+          "InvoicedQuantity": [
+            {
+              "_": 1,
+              "unitCode": "DAY"
+            }
+          ],
+          "Item": [
+            {
+              "CommodityClassification": [
+                {
+                  "ItemClassificationCode": [
+                    {
+                      "_": "010",
+                      "listID": "CLASS"
+                    }
+                  ]
+                }
+              ],
+              "Description": [
+                {
+                  "_": "class A"
+                }
+              ],
+              "OriginCountry": [
+                {
+                  "IdentificationCode": [
+                    {
+                      "_": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "ItemPriceExtension": [
+            {
+              "Amount": [
+                {
+                  "_": 150,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "LineExtensionAmount": [
+            {
+              "_": 150,
+              "currencyID": "MYR"
+            }
+          ],
+          "Price": [
+            {
+              "PriceAmount": [
+                {
+                  "_": 150,
+                  "currencyID": "MYR"
+                }
+              ]
+            }
+          ],
+          "TaxTotal": [
+            {
+              "TaxAmount": [
+                {
+                  "_": 0,
+                  "currencyID": "MYR"
+                }
+              ],
+              "TaxSubtotal": [
+                {
+                  "TaxableAmount": [
+                    {
+                      "_": 0,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxAmount": [
+                    {
+                      "_": 0,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "Percent": [
+                    {
+                      "_": 6
+                    }
+                  ],
+                  "TaxCategory": [
+                    {
+                      "ID": [
+                        {
+                          "_": "02"
+                        }
+                      ],
+                      "TaxScheme": [
+                        {
+                          "ID": [
+                            {
+                              "_": "OTH",
+                              "schemeAgencyID": "6",
+                              "schemeID": "UN/ECE 5153"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "TaxableAmount": [
+                    {
+                      "_": 150,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxAmount": [
+                    {
+                      "_": 9,
+                      "currencyID": "MYR"
+                    }
+                  ],
+                  "TaxCategory": [
+                    {
+                      "ID": [
+                        {
+                          "_": "E"
+                        }
+                      ],
+                      "Percent": [
+                        {
+                          "_": 0
+                        }
+                      ],
+                      "TaxScheme": [
+                        {
+                          "ID": [
+                            {
+                              "_": "OTH",
+                              "schemeAgencyID": "6",
+                              "schemeID": "UN/ECE 5153"
+                            }
+                          ]
+                        }
+                      ],
+                      "TaxExemptionReason": [
+                        {
+                          "_": "tax testing"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "TaxExchangeRate": [
+        {
+          "SourceCurrencyCode": [
+            {
+              "_": "MYR"
+            }
+          ],
+          "TargetCurrencyCode": [
+            {
+              "_": "MYR"
+            }
+          ],
+          "CalculationRate": [
+            {
+              "_": 0
+            }
+          ]
+        }
+      ],
+      "UBLExtensions": [
+        {
+          "UBLExtension": [
+            {
+              "ExtensionURI": [
+                {
+                  "_": "urn:oasis:names:specification:ubl:dsig:enveloped:xades"
+                }
+              ],
+              "ExtensionContent": [
+                {
+                  "UBLDocumentSignatures": [
+                    {
+                      "SignatureInformation": [
+                        {
+                          "ID": [
+                            {
+                              "_": "urn:oasis:names:specification:ubl:signature:1"
+                            }
+                          ],
+                          "ReferencedSignatureID": [
+                            {
+                              "_": "urn:oasis:names:specification:ubl:signature:Invoice"
+                            }
+                          ],
+                          "Signature": [
+                            {
+                              "Id": "signature",
+                              "Object": [
+                                {
+                                  "QualifyingProperties": [
+                                    {
+                                      "Target": "signature",
+                                      "SignedProperties": [
+                                        {
+                                          "Id": "id-xades-signed-props",
+                                          "SignedSignatureProperties": [
+                                            {
+                                              "SigningTime": [
+                                                {
+                                                  "_": "2025-05-28T04:01:25Z"
+                                                }
+                                              ],
+                                              "SigningCertificate": [
+                                                {
+                                                  "Cert": [
+                                                    {
+                                                      "CertDigest": [
+                                                        {
+                                                          "DigestMethod": [
+                                                            {
+                                                              "_": "",
+                                                              "Algorithm": "http://www.w3.org/2001/04/xmlenc#sha256"
+                                                            }
+                                                          ],
+                                                          "DigestValue": [
+                                                            {
+                                                              "_": "N3jjZH+tQt4WZ8KL7a1QNyZIhfPtDU73IF/Sw2kS0XI="
+                                                            }
+                                                          ]
+                                                        }
+                                                      ],
+                                                      "IssuerSerial": [
+                                                        {
+                                                          "X509IssuerName": [
+                                                            {
+                                                              "_": "CN=Trial LHDNM Sub CA V1, OU=Terms of use at http://www.posdigicert.com.my, O=LHDNM, C=MY"
+                                                            }
+                                                          ],
+                                                          "X509SerialNumber": [
+                                                            {
+                                                              "_": "134335815126870614299385967076690767205"
+                                                            }
+                                                          ]
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "KeyInfo": [
+                                {
+                                  "X509Data": [
+                                    {
+                                      "X509Certificate": [
+                                        {
+                                          "_": "MIIFETCCAvmgAwIBAgIQZRAjC5fnHanSz8YucLItZTANBgkqhkiG9w0BAQsFADB1MQswCQYDVQQGEwJNWTEOMAwGA1UEChMFTEhETk0xNjA0BgNVBAsTLVRlcm1zIG9mIHVzZSBhdCBodHRwOi8vd3d3LnBvc2RpZ2ljZXJ0LmNvbS5teTEeMBwGA1UEAxMVVHJpYWwgTEhETk0gU3ViIENBIFYxMB4XDTI1MDQyNDAzMTQwMVoXDTI3MDQyNDAzMTQwMVowOzELMAkGA1UEBhMCTVkxFTATBgNVBAMTDENISU4gTEVFIEhBTzEVMBMGA1UEBRMMMDIxMTIyMDExNjA5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1xyuQox33FpQGG3/UluwyAoZobOYvYLpJserj8j+iyQZZ5H5R4K76WxeCDQf1u3hJD/LePPhn6mrof5DB4Xz4u2tyOv/vuMDBSDr9hAiPSnqpRx10/v/lY3F7OfdUmIF4Ust5BN3TFDDp138YVo/KRQs/hjs2M1oByfQ7RXcil6THCMj/0JxS+kv1cWaYTkeT0TjSUeTVqwHEM/zzGMScK9FBe/flXwTKGuR7SNiVbOwvJM7DUMF/tGkgVNlvGnO4NP6JrfHWU2ZQ7a9/OpuLOav7RNB170Rd9Tn4iBmG/LqBWWQTdufDsK5X4xVJ2KZz3LzrzeN+D072/iZyNT66QIDAQABo4HWMIHTMBEGA1UdDgQKBAhMbqpuCI3nozBTBgNVHSAETDBKMEgGCSsGAQQBg4pFATA7MDkGCCsGAQUFBwIBFi1odHRwczovL3d3dy5wb3NkaWdpY2VydC5jb20ubXkvcmVwb3NpdG9yeS9jcHMwEwYDVR0jBAwwCoAITX/Za7bFCNAwDgYDVR0PAQH/BAQDAgP4MEQGA1UdHwQ9MDswOaA3oDWGM2h0dHA6Ly90cmlhbGNybC5wb3NkaWdpY2VydC5jb20ubXkvVHJpYWxMSEROTVYxLmNybDANBgkqhkiG9w0BAQsFAAOCAgEArGTUyV1+m4nkb477Zwq1MkS6pkKh/tCceCpERWYCYQ1cBY27vklapujOXHnm5xeui7TOtUPMhLU1GbecyPMy4p2/SqUQY3dJSs2isYZZceniL1xvocxZkQFwpX55tvODoAK/+pTwIx9KzofwoROuU8wLZPJjeLopjGAOeG/Xho7K/V5REHzD4Wn1dxmPGyp9IJ/ySAxJXnH3GmXZGtqPqMjLid1JDFfF4XA5Ns8fwrWr6BaASiRqZLOQepqEm8LN77KeddXX3V4axuWpeuxy94C/8Uan3AS7YHK2hO+h+OTsVbJZxgjsOlYIAbarRm6gHJGgS6DOuKh3lZxUJi9A2KFf8pBFcC1QiwtWv3YhEaFJ3Gk9FDzb+uDxYnbkr5qE0b77AFf3P2Se9ERm7Wf1i7q3Ykn9T6d5+hMSstKhqmzFXgmkf+RPzxsOuSSGhd7griWwzsMBK5IXVYw8+AmdPyPK0eon/DrxINOfTrTKmaU3ppDMriQPmCK45MmK+GmCZZO3AVRkkhf+o623SEnXbXjq+Bw1ISmD1lcVKz8msa4Y9Iqug0XRAUqex+1MJ8Yla6a/SWvbPzdfFJGut3qahr5x+hUClQ/MV9z12xYylA34UFDZ1UAsu8+R4AoVGF2oHL0ORmvVhNfHUPSqeWHpWBQiznEiI0hdWlcjslpgNUA="
+                                        }
+                                      ],
+                                      "X509SubjectName": [
+                                        {
+                                          "_": "SERIALNUMBER=021122011609, CN=CHIN LEE HAO, C=MY"
+                                        }
+                                      ],
+                                      "X509IssuerSerial": [
+                                        {
+                                          "X509IssuerName": [
+                                            {
+                                              "_": "CN=Trial LHDNM Sub CA V1, OU=Terms of use at http://www.posdigicert.com.my, O=LHDNM, C=MY"
+                                            }
+                                          ],
+                                          "X509SerialNumber": [
+                                            {
+                                              "_": "134335815126870614299385967076690767205"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "SignatureValue": [
+                                {
+                                  "_": "XxvzkfM+WBCFc5cLu5NBkYCmgDq7fZJ2G7RQ3A4Zci4pmOuAAEgQuimXv7EvMsyXnPfVeSRRDFXJHI7m2Q5+G8sn4olpKBYYPACaCPzbcpPH5xzDBIFEMwNCapk9ou+j3UGwR/0HwuQ89r3zxshLS6+J6vIay94iJfJaEITfQ2RDT53avhNk3/Z7I5HLfrHrxc7Zm8NfYge0A+Sw/5kWh1GTS3KtbgDG8bCanTZ/iCpRV3pJywHAbSlCehn7NzF0fcBzb131pppST28NSXkKImRc1EbgjRb2TXQQj5DkR1CFFkPorzoAnxpmqD0vT0NQVQpp+GEdJi15rboMhYTtKg=="
+                                }
+                              ],
+                              "SignedInfo": [
+                                {
+                                  "SignatureMethod": [
+                                    {
+                                      "_": "",
+                                      "Algorithm": "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
+                                    }
+                                  ],
+                                  "Reference": [
+                                    {
+                                      "Type": "http://uri.etsi.org/01903/v1.3.2#SignedProperties",
+                                      "URI": "#id-xades-signed-props",
+                                      "DigestMethod": [
+                                        {
+                                          "_": "",
+                                          "Algorithm": "http://www.w3.org/2001/04/xmlenc#sha256"
+                                        }
+                                      ],
+                                      "DigestValue": [
+                                        {
+                                          "_": "hrIrBTbooy03s5DLkUIoqSA7IQfZpZNHey3TLnu4Mjc="
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "Type": "",
+                                      "URI": "",
+                                      "DigestMethod": [
+                                        {
+                                          "_": "",
+                                          "Algorithm": "http://www.w3.org/2001/04/xmlenc#sha256"
+                                        }
+                                      ],
+                                      "DigestValue": [
+                                        {
+                                          "_": "91l+HSxiPyy97mVikGiMTHlX6OjdXlGfO8XFCqbOb1k="
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "Signature": [
+        {
+          "ID": [
+            {
+              "_": "urn:oasis:names:specification:ubl:signature:Invoice"
+            }
+          ],
+          "SignatureMethod": [
+            {
+              "_": "urn:oasis:names:specification:ubl:dsig:enveloped:xades"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
