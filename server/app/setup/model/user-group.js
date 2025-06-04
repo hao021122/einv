@@ -10,6 +10,7 @@ const Joi = require("joi");
 const userGroup = Joi.object({
   ug: Joi.string()
     .guid({ version: ["uuidv4"] })
+    .allow(null)
     .optional()
     .messages({
       "string.guid": "User Group must be a valid UUID",
@@ -25,7 +26,7 @@ const userGroup = Joi.object({
     "number.integer": "Is Active must be an integer.",
     "any.only": "Is Active must be 0 or 1.",
   }),
-  ds: Joi.string().max(6).optional().messages({
+  ds: Joi.string().max(6).allow("").optional().messages({
     "string.base": "Display Sequence must be a string",
     "string.max": "Display Sequence must not exceed 6 characters",
   }),

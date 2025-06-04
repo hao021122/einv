@@ -1,4 +1,15 @@
 const Joi = require("joi");
+const msic = require("../../code/msic.json");
+const state = require("../../code/state-code.json");
+const country = require("../../code/country-code.json");
+
+// ======================================================
+// ********************* Valid Code *********************
+// ======================================================
+const validMsicCode = msic.map((msic) => msic.Code);
+const validMsicDesc = msic.map((msic) => msic.Description);
+const validState = state.map((s) => s.Code);
+const validCountry = country.map((c) => c.Code);
 
 /**
  * Company Profile
@@ -70,16 +81,34 @@ const companyProfile = Joi.object({
       "string.email": "Please provide a valid email address",
       "any.required": "Email is required",
     }),
-  mc: Joi.string().max(5).required().messages({
-    "string.base": "MSIC code must be a string",
-    "string.max": "MSIC code must not exceed 5 characters",
-    "any.required": "MSIC code is required",
-  }),
-  md: Joi.string().max(300).required().messages({
-    "string.base": "MISC Description must be a string",
-    "string.max": "MSIC Description must not exceed 300 characters",
-    "any.required": "MSIC Description is required",
-  }),
+  mc: Joi.string()
+    .max(5)
+    .valid(...validMsicCode)
+    .required()
+    .messages({
+      "string.base":
+        "Malaysia Standard Industrial Classification (MSIC) Codes must be a string",
+      "string.max":
+        "Malaysia Standard Industrial Classification (MSIC) Codes must not exceed 5 characters",
+      "any.only":
+        "Invalid Malaysia Standard Industrial Classification (MSIC) Codes",
+      "any.required":
+        "Malaysia Standard Industrial Classification (MSIC) Codes is required",
+    }),
+  md: Joi.string()
+    .max(300)
+    .valid(...validMsicDesc)
+    .required()
+    .messages({
+      "string.base":
+        "Malaysia Standard Industrial Classification (MSIC) Codes Description must be a string",
+      "string.max":
+        "Malaysia Standard Industrial Classification (MSIC) Codes Description must not exceed 300 characters",
+      "any.only":
+        "Invalid Malaysia Standard Industrial Classification (MSIC) Codes Description",
+      "any.required":
+        "Malaysia Standard Industrial Classification (MSIC) Codes Description is required",
+    }),
   a1: Joi.string().max(150).required().messages({
     "string.base": "Address Line 1 must be a string",
     "string.max": "Address Line 1 must not exceed 150 characters",
@@ -103,16 +132,30 @@ const companyProfile = Joi.object({
     "string.max": "City must not exceed 50 characters",
     "any.required": "City is required",
   }),
-  s: Joi.string().max(50).required().messages({
-    "string.base": "State must be a string",
-    "string.max": "State must not exceed 50 characters",
-    "any.required": "State is required",
-  }),
-  c2: Joi.string().max(3).required().messages({
-    "string.base": "Country must be a string",
-    "string.max": "Country must not exceed 50 characters",
-    "any.required": "Country is required",
-  }),
+  s: Joi.string()
+    .max(50)
+    .valid(...validState)
+    .required()
+    .messages({
+      "string.base": "State must be a string",
+      "string.max": "State must not exceed 50 characters",
+      "any.only": `Invalid State Code, Must be one of: ${validState.join(
+        ", "
+      )}`,
+      "any.required": "State is required",
+    }),
+  c2: Joi.string()
+    .max(3)
+    .valid(...validCountry)
+    .required()
+    .messages({
+      "string.base": "Country must be a string",
+      "string.max": "Country must not exceed 50 characters",
+      "any.only": `Invalid Country Code, Must be one of: ${validCountry.join(
+        ", "
+      )}`,
+      "any.required": "Country is required",
+    }),
   cn: Joi.string()
     .pattern(/^\+60\d{8,9}$/)
     .required()

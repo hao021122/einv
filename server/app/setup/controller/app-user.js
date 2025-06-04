@@ -16,31 +16,54 @@ exports.create = async (req, res) => {
       abortEarly: false,
       allowUnknown: false,
     });
-    console.log(value);
 
     if (error)
       return res.status(400).send(
         libApi.response(
-          error.details.map((e) => e.message),
+          error.details.map((e) => ({ msg: e.message })),
           "Failed"
         )
       );
+    const u = value.data[0];
 
-    const u = valid.data[0];
+    const userId = pgSql.fnToUuid(u.u);
+    const validation = await db.oneOrNone(
+      `
+        SELECT user_name, login_id, email
+        FROM ${pgSql.USER}
+        WHERE 
+          (user_name = $1 OR login_id = $2 OR email = $3)
+          AND user_id <> $4;
+      `,
+      [u.un, u.li, u.e, userId]
+    );
+
+    if (validation) {
+      return res
+        .status(400)
+        .send(
+          libApi.response(
+            [{ msg: "Username, Email or Login ID already exists." }],
+            "Failed"
+          )
+        );
+    }
 
     // -------------------------------------
     // process
     // -------------------------------------
+    const decode = libShared.decrypt(u.p);
+    const hash = crypto.createHash("SHA-256").update(decode).digest("hex");
     const newId = libShared.toNewGuid();
 
     await db.none(
       `
-                        INSERT INTO ${pgSql.USER} (
-                            user_id, created_on, created_by, modified_on, modified_by, user_group_id, user_name, login_id, email, pwd, is_active
-                        ) VALUE (
-                            $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11 
-                        );
-                    `,
+        INSERT INTO ${pgSql.USER} (
+          user_id, created_on, created_by, modified_on, modified_by, user_group_id, user_name, login_id, email, pwd, is_active
+        ) VALUES (
+          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11 
+        );
+      `,
       [
         newId,
         libShared.getDate(),
@@ -51,21 +74,32 @@ exports.create = async (req, res) => {
         u.un,
         u.li,
         u.e,
-        u.p,
+        hash,
         u.ia,
       ]
     );
+
+    // -------------------------------------
+    // Append Log
+    // -------------------------------------
 
     res
       .status(200)
       .send(
         libApi.response(
-          { msg: "User Added Successfully!!", ref: newId },
+          [{ msg: "User added successfully!!", ref: newId }],
           "Success"
         )
       );
   } catch (err) {
-    res.status(500).send(libApi.response("Internal Server Error", "Failed"));
+    res
+      .status(500)
+      .send(
+        libApi.response(
+          [{ msg: "Unable to create user. Error: " + err.message }],
+          "Failed"
+        )
+      );
   }
 };
 
@@ -87,7 +121,7 @@ exports.list = async (req, res) => {
             a.user_name AS un,
             a.login_id AS li,
             a.email AS e,
-            a.is_active AS ia,
+            a.is_active AS ia
           FROM ${pgSql.USER} a
           LEFT JOIN ${pgSql.USER_GROUP} b ON b.user_group_id = a.user_group_id
           WHERE a.user_id = $1
@@ -107,7 +141,7 @@ exports.list = async (req, res) => {
             a.user_name AS un,
             a.login_id AS li,
             a.email AS e,
-            a.is_active AS ia,
+            a.is_active AS ia
           FROM ${pgSql.USER} a
           LEFT JOIN ${pgSql.USER_GROUP} b ON b.user_group_id = a.user_group_id
           ORDER BY a.login_id
@@ -115,10 +149,20 @@ exports.list = async (req, res) => {
       );
     }
 
+    // -------------------------------------
+    // Append Log
+    // -------------------------------------
+
     res.status(200).send(libApi.response(result, "Success"));
   } catch (err) {
-    console.error("Error fetching users:", err);
-    res.status(500).send(libApi.response("Internal Server Error", "Failed"));
+    res
+      .status(500)
+      .send(
+        libApi.response(
+          [{ msg: "Unable to retrieve the list. Error: " + err.message }],
+          "Failed"
+        )
+      );
   }
 };
 
@@ -131,39 +175,82 @@ exports.update = async (req, res) => {
       abortEarly: false,
       allowUnknown: false,
     });
-    console.log(value);
 
     if (error)
       return res.status(400).send(
         libApi.response(
-          error.details.map((e) => e.message),
+          error.details.map((e) => ({ msg: e.message })),
           "Failed"
         )
       );
 
-    const u = valid.data[0];
+    const u = value.data[0];
+
+    if (!u.u) {
+      return res
+        .status(400)
+        .send(libApi.response([{ msg: "User ID is required" }], "Failed"));
+    }
+
+    const userId = pgSql.fnToUuid(u.u);
+
+    const validation = await db.oneOrNone(
+      `
+        SELECT user_name, login_id, email
+        FROM ${pgSql.USER}
+        WHERE 
+          (user_name = $1 OR login_id = $2 OR email = $3)
+          AND user_id <> $4;
+      `,
+      [u.un, u.li, u.e, userId]
+    );
+
+    if (validation) {
+      return res
+        .status(400)
+        .send(
+          libApi.response(
+            [{ msg: "Username, Email or Login ID already exists." }],
+            "Failed"
+          )
+        );
+    }
 
     // -------------------------------------
     // process
     // -------------------------------------
+    const decode = libShared.decrypt(u.p);
+    const hash = crypto.createHash("SHA-256").update(decode).digest("hex");
+
     await db.none(
       `
-                UPDATE ${pgSql.USER} SET
-                modified_on = $1, modified_by = $2, user_group_id = $3, user_name = $4, login_id = $5, email = $6, pwd = $7, is_active = $8
-                WHERE user_id = $9
-            `,
-      [libShared.getDate(), "tester", u.ug, u.un, u.li, u.e, u.p, u.ia, u.u]
+        UPDATE ${pgSql.USER} SET
+        modified_on = $1, modified_by = $2, user_group_id = $3, user_name = $4, login_id = $5, email = $6, pwd = $7, is_active = $8
+        WHERE user_id = $9
+      `,
+      [libShared.getDate(), "tester", u.ug, u.un, u.li, u.e, hash, u.ia, userId]
     );
+
+    // -------------------------------------
+    // Append Log
+    // -------------------------------------
 
     res
       .status(200)
       .send(
         libApi.response(
-          { msg: "User Updated Successfully!!", ref: u.u },
+          [{ msg: "User updated successfully!!", ref: userId }],
           "Success"
         )
       );
   } catch (err) {
-    res.status(500).send(libApi.response("Internal Server Error", "Failed"));
+    res
+      .status(500)
+      .send(
+        libApi.response(
+          [{ msg: "Unable to update the record. Error: " + err.message }],
+          "Failed"
+        )
+      );
   }
 };

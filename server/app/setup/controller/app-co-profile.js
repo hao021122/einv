@@ -18,12 +18,11 @@ exports.create = async (req, res) => {
       abortEarly: false,
       allowUnknown: false,
     });
-    console.log(value);
 
     if (error)
       return res.status(400).send(
         libApi.response(
-          error.details.map((e) => e.message),
+          error.details.map((e) => ({ msg: e.message })),
           "Failed"
         )
       );
@@ -99,7 +98,7 @@ exports.create = async (req, res) => {
       .status(200)
       .send(
         libApi.response(
-          { msg: "Company Profile Added Successfully!!", ref: newId },
+          [{ msg: "Company Profile Added Successfully!!", ref: newId }],
           "Success"
         )
       );
@@ -151,7 +150,6 @@ exports.update = async (req, res) => {
       abortEarly: false,
       allowUnknown: false,
     });
-    console.log(value);
 
     if (error)
       return res.status(400).send(
@@ -162,6 +160,12 @@ exports.update = async (req, res) => {
       );
 
     const co = value.data[0];
+
+    if (!co.cid) {
+      return res
+        .status(400)
+        .send(libApi.response("Company ID is required", "Failed"));
+    }
 
     const validMiscCode = misc.some((m) => m.Code === co.mc);
     const validMiscDesc = misc.some((m) => m.Description === co.md);
@@ -225,7 +229,7 @@ exports.update = async (req, res) => {
       .status(200)
       .send(
         libApi.response(
-          { msg: "Company Profile Updated Successfully!!", ref: co.cid },
+          [{ msg: "Company Profile Updated Successfully!!", ref: co.cid }],
           "Success"
         )
       );

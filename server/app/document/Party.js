@@ -236,6 +236,7 @@ class Party {
                     .messages({
                       "string.base": "State must be a string",
                       "any.only": "Invalid State Code",
+                      "any.required": "State Code is required"
                     }),
                 })
               )

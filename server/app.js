@@ -4,6 +4,9 @@ const app = express();
 const PORT = 48998;
 
 const coProfile = require("./app/setup/routes/co-profile");
+const userGroup = require("./app/setup/routes/user-group");
+const user = require("./app/setup/routes/user");
+const sysSetup = require("./app/setup/routes/sys-setup");
 const document = require("./app/setup/routes/document");
 const sharedAPI = require("./app/api/api-shared");
 
@@ -25,18 +28,12 @@ app.use((req, res, next) => {
   }
 });
 
-app.use('/cp', coProfile);
-app.use('/subdoc', document);
-app.get('/test', async (req, res) => {
-  try {
-    const token = await sharedAPI.getDocType();
-    res.status(200).send(token);
-  } catch (err) {
-    console.error('Login failed:', err);
-    res.status(500).send({ error: 'Login failed', details: err.message });
-  }
-})
+app.use("/cp", coProfile);
+app.use("/ug", userGroup);
+app.use("/u", user);
+app.use("/sys", sysSetup);
+app.use("/subdoc", document);
 
 app.listen(PORT, () => {
-    console.log(`Server is running on PORT: ${PORT}`);
+  console.log(`Server is running on PORT: ${PORT}`);
 });
