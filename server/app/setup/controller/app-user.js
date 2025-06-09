@@ -225,7 +225,8 @@ exports.update = async (req, res) => {
     await db.none(
       `
         UPDATE ${pgSql.USER} SET
-        modified_on = $1, modified_by = $2, user_group_id = $3, user_name = $4, login_id = $5, email = $6, pwd = $7, is_active = $8
+        modified_on = $1, modified_by = $2, user_group_id = $3, user_name = $4, 
+        login_id = $5, email = $6, pwd = $7, is_active = $8
         WHERE user_id = $9
       `,
       [libShared.getDate(), "tester", u.ug, u.un, u.li, u.e, hash, u.ia, userId]

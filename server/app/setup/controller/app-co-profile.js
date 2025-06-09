@@ -37,19 +37,21 @@ exports.create = async (req, res) => {
     if (!validMiscCode)
       return res
         .status(400)
-        .send(libApi.response("MISC Code not found!!", "Failed"));
+        .send(libApi.response([{ msg: "MISC Code not found!!" }], "Failed"));
     if (!validMiscDesc)
       return res
         .status(400)
-        .send(libApi.response("MISC Description not found!!", "Failed"));
+        .send(
+          libApi.response([{ msg: "MISC Description not found!!" }], "Failed")
+        );
     if (!stateCode)
       return res
         .status(400)
-        .send(libApi.response("State Code not found!!", "Failed"));
+        .send(libApi.response([{ msg: "State Code not found!!" }], "Failed"));
     if (!countryCode)
       return res
         .status(400)
-        .send(libApi.response("Country Code not found!!", "Failed"));
+        .send(libApi.response([{ msg: "Country Code not found!!" }], "Failed"));
 
     // -------------------------------------
     // process
@@ -94,17 +96,28 @@ exports.create = async (req, res) => {
       ]
     );
 
+    // -------------------------------------
+    // Append Log
+    // -------------------------------------
+
     return res
       .status(200)
       .send(
         libApi.response(
-          [{ msg: "Company Profile Added Successfully!!", ref: newId }],
+          [{ msg: "Company Profile added successfully!!", ref: newId }],
           "Success"
         )
       );
   } catch (err) {
     console.log(err);
-    res.status(500).send(libApi.response("Internal Server Error", "Failed"));
+    res
+      .status(500)
+      .send(
+        libApi.response(
+          [{ msg: "Unable to create user. Error: " + err.message }],
+          "Failed"
+        )
+      );
   }
 };
 
@@ -134,10 +147,20 @@ exports.list = async (req, res) => {
       LIMIT 1
     `);
 
+    // -------------------------------------
+    // Append Log
+    // -------------------------------------
+
     res.status(200).send(libApi.response(result, "Success"));
   } catch (err) {
-    console.error("Error fetching company profiles:", err);
-    res.status(500).send(libApi.response("Internal Server Error", "Failed"));
+    res
+      .status(500)
+      .send(
+        libApi.response(
+          [{ msg: "Unable to retrieve the list. Error: " + err.message }],
+          "Failed"
+        )
+      );
   }
 };
 
@@ -164,7 +187,7 @@ exports.update = async (req, res) => {
     if (!co.cid) {
       return res
         .status(400)
-        .send(libApi.response("Company ID is required", "Failed"));
+        .send(libApi.response([{ msg: "Company ID is required" }], "Failed"));
     }
 
     const validMiscCode = misc.some((m) => m.Code === co.mc);
@@ -175,19 +198,21 @@ exports.update = async (req, res) => {
     if (!validMiscCode)
       return res
         .status(400)
-        .send(libApi.response("MISC Code not found!!", "Failed"));
+        .send(libApi.response([{ msg: "MISC Code not found!!" }], "Failed"));
     if (!validMiscDesc)
       return res
         .status(400)
-        .send(libApi.response("MISC Description not found!!", "Failed"));
+        .send(
+          libApi.response([{ msg: "MISC Description not found!!" }], "Failed")
+        );
     if (!stateCode)
       return res
         .status(400)
-        .send(libApi.response("State Code not found!!", "Failed"));
+        .send(libApi.response([{ msg: "State Code not found!!" }], "Failed"));
     if (!countryCode)
       return res
         .status(400)
-        .send(libApi.response("Country Code not found!!", "Failed"));
+        .send(libApi.response([{ msg: "Country Code not found!!" }], "Failed"));
 
     // -------------------------------------
     // process
@@ -225,16 +250,27 @@ exports.update = async (req, res) => {
       ]
     );
 
+    // -------------------------------------
+    // Append Log
+    // -------------------------------------
+
     return res
       .status(200)
       .send(
         libApi.response(
-          [{ msg: "Company Profile Updated Successfully!!", ref: co.cid }],
+          [{ msg: "Company Profile updated successfully!!", ref: co.cid }],
           "Success"
         )
       );
   } catch (err) {
     console.log(err);
-    res.status(500).send(libApi.response("Internal Server Error", "Failed"));
+    res
+      .status(500)
+      .send(
+        libApi.response(
+          [{ msg: "Unable to update the record. Error: " + err.message }],
+          "Failed"
+        )
+      );
   }
 };

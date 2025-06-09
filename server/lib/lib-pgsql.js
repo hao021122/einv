@@ -254,6 +254,16 @@ Object.defineProperty(pgSql, "SYS_SETUP", {
         return "tb_sys_setup";
     }
 });
+Object.defineProperty(pgSql, "UAC_LOG", {
+    get: function() {
+        return "tb_uacc_log";
+    }
+});
+Object.defineProperty(pgSql, "SUSPEND_LOG", {
+    get: function() {
+        return "tb_user_suspend_log";
+    }
+});
 
 /**
  *

@@ -21,6 +21,17 @@ const userGroup = Joi.object({
     "string.max": "User Group Description must not exceed 255 characters",
     "any.required": "User Group Description is required",
   }),
+  a: Joi.array().items(
+    Joi.object({
+      i: Joi.string()
+        .guid({ version: ["uuidv4"] })
+        .required()
+        .messages({
+          "string.guid": "Action must be a valid UUID",
+          "string.base": "Action must be a string",
+        }),
+    })
+  ),
   ia: Joi.number().valid(0, 1).integer().optional().messages({
     "number.base": "Is Active must be a number.",
     "number.integer": "Is Active must be an integer.",

@@ -8,6 +8,7 @@ const userGroup = require("./app/setup/routes/user-group");
 const user = require("./app/setup/routes/user");
 const sysSetup = require("./app/setup/routes/sys-setup");
 const document = require("./app/setup/routes/document");
+const uac = require("./app/setup/routes/user-access");
 const sharedAPI = require("./app/api/api-shared");
 
 // ✅ JSON Middleware (Only for JSON requests)
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
   }
 });
 
+app.use("/uac", uac);
 app.use("/cp", coProfile);
 app.use("/ug", userGroup);
 app.use("/u", user);

@@ -193,6 +193,36 @@ libShared.getDate = function (mode = 'standard') {
   return now.format("YYYY-MM-DD HH:mm:ss"); // Standard 24-hour format
 };
 
+/**
+ * 
+ * @param {dateTime} dt 
+ * @param {int} dur 
+ * @param {string} type 
+ * years	y
+ * quarters	Q
+ * months	M
+ * weeks	w
+ * days	d
+ * hours	h
+ * minutes	m
+ * seconds	s
+ * milliseconds	ms
+ * @returns 
+ */
+libShared.addTime = function (dt, dur, type) {
+  if (!dt || !dur || !type) return null;
+
+  const dateTime = moment(dt).tz(timezone);
+
+  if (!dateTime.isValid()) {
+    return null;
+  }
+
+  const add = moment(dateTime).add(dur, type);
+
+  return add.format("YYYY-MM-DD HH:mm:ss")
+}
+
 libShared.padFillLeft = function (str, length, char) {
   if (str.length >= length) {
     return str;
