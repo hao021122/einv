@@ -7,6 +7,13 @@ const state = require("../code/state-code.json");
 const validState = state.map((c) => c.Code);
 const country = require("../code/country-code.json");
 const validCountry = country.map((c) => c.Code);
+const dialCode = require("../code/dial-code.json");
+const escapedDialCodes = dialCode.map(d =>
+  d.dial_code.replace(/\+/g, '\\+')
+);
+
+const dialCodePattern = `^(${escapedDialCodes.join('|')})\\d{6,12}$`;
+const phoneRegex = new RegExp(dialCodePattern);
 
 /**
  * @param {Object} params
@@ -309,12 +316,12 @@ class Party {
           Telephone: Joi.array().items(
             Joi.object({
               _: Joi.string()
-                .pattern(/^\+60\d{8,9}$/)
+                .pattern(phoneRegex)
                 .allow("")
                 .optional()
                 .messages({
                   "string.pattern.base":
-                    "Contact number must start with +60 and be 10-11 digits.",
+                    "Contact number must start with a valid country code and contain 6-12 digits after the code",
                   "any.required": "Contact number is required.",
                 }),
             })

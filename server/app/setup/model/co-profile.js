@@ -158,6 +158,7 @@ const companyProfile = Joi.object({
     }),
   cn: Joi.string()
     .pattern(/^\+60\d{8,9}$/)
+    .allow("")
     .required()
     .messages({
       "string.pattern.base":

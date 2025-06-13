@@ -74,6 +74,7 @@ const db = pgp(cn);
 const pg = require("pg-promise")().pg;
 const types = pg.types;
 const moment = require("moment-timezone");
+const { func } = require("joi");
 
 // Parse PostgreSQL TIMESTAMP (OID 1114) without timezone into your desired timezone
 types.setTypeParser(1114, (str) =>
@@ -234,9 +235,19 @@ Object.defineProperty(pgSql, "COMPANY_PROFILE", {
     return "tb_co";
   },
 });
+Object.defineProperty(pgSql, "AXN", {
+  get: function () {
+    return "tb_action"
+  }
+});
 Object.defineProperty(pgSql, "USER_GROUP", {
   get: function () {
     return "tb_user_group";
+  },
+});
+Object.defineProperty(pgSql, "GROUP_AXN", {
+  get: function () {
+    return "tb_user_group_action";
   },
 });
 Object.defineProperty(pgSql, "USER", {
@@ -245,24 +256,24 @@ Object.defineProperty(pgSql, "USER", {
   },
 });
 Object.defineProperty(pgSql, "LOG", {
-    get: function() {
-        return "tb_log";
-    }
+  get: function () {
+    return "tb_log";
+  },
 });
 Object.defineProperty(pgSql, "SYS_SETUP", {
-    get: function() {
-        return "tb_sys_setup";
-    }
+  get: function () {
+    return "tb_sys_setup";
+  },
 });
 Object.defineProperty(pgSql, "UAC_LOG", {
-    get: function() {
-        return "tb_uacc_log";
-    }
+  get: function () {
+    return "tb_uacc_log";
+  },
 });
 Object.defineProperty(pgSql, "SUSPEND_LOG", {
-    get: function() {
-        return "tb_user_suspend_log";
-    }
+  get: function () {
+    return "tb_user_suspend_log";
+  },
 });
 
 /**
@@ -397,20 +408,20 @@ pgSql.executeStoreProc = async function (sp_name, params) {
 };
 
 pgSql.appendLog = async function (log_type, log_data) {
-    try {
-        await db.none(
-            `
+  try {
+    await db.none(
+      `
                 INSERT INTO ${this.LOG} (
                 
                 ) VALUES (
                  
                 )
             `,
-            []
-        )
-    } catch (err) {
-        throw err;
-    }
+      []
+    );
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Add this function inside your pgSql object in the library
@@ -449,4 +460,4 @@ pgSql.fnToUuid = function (i) {
   }
 };
 
-module.exports = { pgSql, db };
+module.exports = { pgSql, db, pgp };

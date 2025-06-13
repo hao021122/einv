@@ -65,20 +65,16 @@ exports.submit = async (req, res) => {
       abortEarly: false,
       allowUnknown: false,
     });
-    console.log(value);
-    console.log(value.supplier);
-    console.log(value.buyer);
 
     if (error)
       return res.status(400).send(
         libApi.response(
-          error.details.map((e) => e.message),
+          error.details.map((e) => ({ msg: e.message })),
           "Failed"
         )
       );
 
-    //
-
+    // Combined to LHDN JSON Format
     const inv = {
       ID: [new InvoiceID(value.id).toMap()],
       IssueDate: [new IssueDate(value.date).toMap()],
@@ -228,18 +224,16 @@ exports.submit = async (req, res) => {
 
     const { error: schemaError, value: schemaValue } =
       fullSchema.validate(data);
-    console.log(schemaValue);
 
     if (schemaError) {
       console.error("Validation failed", schemaError.details);
       return res.status(400).send(
         libApi.response(
-          schemaError.details.map((e) => e.message),
+          schemaError.details.map((e) => ({ msg: e.message })),
           "Failed"
         )
       );
     }
-console.log(JSON.stringify(data));
 
     let hash = crypto
       .createHash("SHA-256")
@@ -248,56 +242,46 @@ console.log(JSON.stringify(data));
     let base64Encode = Buffer.from(JSON.stringify(data), "utf-8").toString(
       "base64"
     );
-    // res.json({hash, base64Encode})
-    try {
-      // console.log(hash);
-      // console.log(value.id);
-      // console.log(base64Encode);
-      
-      
-      
-      const url = `https://${BASE_URL}/api/v1.0/documentsubmissions/`;
-      const body = {
-        "documents": [
-          {
-            "format": "JSON",
-            "documentHash": `${hash}`,
-            "codeNumber": `${value.id}`,
-            "document": `${base64Encode}`,
-          },
-        ],
-      };
-      // console.log(JSON.stringify(body));
-      // res.json(body)
-      const token = await systemLogin();
-      console.log(token);
-      
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          Authorization: token,
-          "Content-Type": "application/json",
+
+    const url = `https://${BASE_URL}/api/v1.0/documentsubmissions/`;
+    const body = {
+      documents: [
+        {
+          format: "JSON",
+          documentHash: `${hash}`,
+          codeNumber: `${value.id}`,
+          document: `${base64Encode}`,
         },
-        body: JSON.stringify(body),
-      });
-      console.log(response);
+      ],
+    };
 
-      if (!response.ok) {
-        const err = await response.text();
-        return res.json({ err });
-      }
+    const token = await systemLogin();
 
-      const success = await response.json();
-      console.log(success);
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
 
-      res.json(success);
-    } catch (err) {
-      console.error("Fetch failed:", err);
-      res
-        .status(500)
-        .json({ error: "Failed to call API", detail: err.message });
+    if (!response.ok) {
+      const err = await response.text();
+      return res.status().send(libApi.response([{ msg: err }], "Failed"));
     }
+
+    const success = await response.json();
+
+    res.status(200).send(libApi.response(success, "Success"));
   } catch (err) {
-    console.log(err);
+    res
+      .status(500)
+      .send(
+        libApi.response(
+          [{ msg: "Failed to call API. Error" + err.message }],
+          "Failed"
+        )
+      );
   }
 };

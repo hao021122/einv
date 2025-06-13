@@ -8,6 +8,7 @@ const payment = require("../../code/payment-mode.json");
 const state = require("../../code/state-code.json");
 const tax = require("../../code/tax-type.json");
 const uom = require("../../code/uom.json");
+const dialCode = require("../../code/dial-code.json");
 
 // ======================================================
 // ********************* Valid Code *********************
@@ -22,6 +23,12 @@ const validPayment = payment.map((p) => p.Code);
 const validState = state.map((s) => s.Code);
 const validTax = tax.map((t) => t.Code);
 const validUom = uom.map((u) => u.Code);
+const escapedDialCodes = dialCode.map(d =>
+  d.dial_code.replace(/\+/g, '\\+')
+);
+
+const dialCodePattern = `^(${escapedDialCodes.join('|')})\\d{6,12}$`;
+const phoneRegex = new RegExp(dialCodePattern);
 
 const documentSchema = Joi.object({
   id: Joi.string().trim().max(50).required().messages({
@@ -255,12 +262,12 @@ const documentSchema = Joi.object({
       "any.required": "Registration Name is required",
     }),
     telephone: Joi.string()
-      .pattern(/^\+60\d{8,9}$/)
-      .allow("")
+      .pattern(phoneRegex)
+      .allow("", "NA")
       .required()
       .messages({
         "string.pattern.base":
-          "Contact number must start with +60 and be 10-11 digits.",
+          "Contact number must start with a valid country code and contain 6-12 digits after the code",
         "any.required": "Contact number is required.",
       }),
     email: Joi.string().email().allow("").optional().messages({
@@ -365,11 +372,11 @@ const documentSchema = Joi.object({
       "any.required": "Registration Name is required",
     }),
     telephone: Joi.string()
-      .pattern(/^\+60\d{8,9}$/)
+      .pattern(phoneRegex)
       .required()
       .messages({
         "string.pattern.base":
-          "Contact number must start with +60 and be 10-11 digits.",
+          "Contact number must start with a valid country code and contain 6-12 digits after the code",
         "string.empty": "Contact Number cannot be empty",
         "any.required": "Contact number is required.",
       }),

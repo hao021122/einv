@@ -2,32 +2,45 @@ const { pgSql, db } = require("../../../lib/lib-pgsql");
 const libApi = require("../../../lib/lib-api");
 const libShared = require("../../../lib/lib-shared");
 
-function Auth() {};
-
-Auth.checkAuth = function (req, res, next) {
+exports.checkAuth = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({
-      status: "Failed",
-      message: "Access Denied. No token provided.",
-    });
+    return res
+      .status(401)
+      .send(libApi.response([{ msg: "Unauthorized" }], "Failed"));
   }
 
   const token = authHeader.split(" ")[1];
 
   try {
     const decoded = jwt.verify(token, secret);
-    req.user = decoded; // attach user info to request
-    next(); // continue to the route
+    req.user = decoded;
+    next();
   } catch (err) {
-    return res.status(401).json({
-      status: "Failed",
-      message: "Invalid or expired token.",
-    });
+    return res
+      .status(401)
+      .send(libApi.response([{ msg: "Invalid or expired token" }], "Failed"));
   }
 };
 
-Auth.checkPermission = async function (req, res, next) {
+exports.checkPermission = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
 
-}
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res
+        .status(401)
+        .send(libApi.response([{ msg: "Unauthorized" }], "Failed"));
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    await db.oneOrNone(
+      `
+        
+      `,
+      []
+    )
+  } catch (err) {}
+};

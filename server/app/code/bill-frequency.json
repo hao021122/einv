@@ -1,0 +1,32 @@
+[
+    {
+        "desc": "Daily"
+    },
+    {
+        "desc": "Weekly"
+    },
+    {
+        "desc": "Biweekly"
+    },
+    {
+        "desc": "Monthly"
+    },
+    {
+        "desc": "Bimonthly"
+    },
+    {
+        "desc": "Quaterly"
+    },
+    {
+        "desc": "Half-yearly"
+    },
+    {
+        "desc": "Yearly"
+    },
+    {
+        "desc": "Other"
+    },
+    {
+        "desc": "Not Applicable"
+    }
+]

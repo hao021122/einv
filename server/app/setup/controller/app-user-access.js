@@ -253,6 +253,8 @@ exports.logout = async (req, res) => {
     // -------------------------------------
     // Append Log
     // -------------------------------------
+
+    res.status(200).send(libApi.response([{ msg: "ok" }], "Failed"));
   } catch (err) {
     res
       .status(500)
